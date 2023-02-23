@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 
+/* -------- NAV STYLES -------- */
 .nav-list {
   background-color: black;
   display: flex;
@@ -17,4 +18,46 @@
   color: white;
   font-size: 1.3rem;
   margin-right: 20px;
+  transition: color 0.5s;
+}
+
+.nav-directory:hover {
+  color: rgb(204, 123, 29);
+}
+
+/* -------- LANDING PAGE STYLES -------- */
+.App {
+  background-image: url('./food-service-landing-page.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+}
+
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90%;
+}
+
+.landing-text {
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+  color: rgb(204, 123, 29);
+  margin: auto 0;
+}
+
+.shop-btn {
+  position: relative;
+  bottom: 330px;
+  width: 10rem;
+  height: 3.5rem;
+  border-radius: 20px;
+  border: none;
+  font-size: 1.3rem;
+  color: rgb(51, 51, 51);
+  box-shadow: 1px 1px 5px 5px rgb(204, 123, 29);
+  cursor: pointer;
+  letter-spacing: 0.5px;
 }
