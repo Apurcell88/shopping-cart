@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component renders landing page 1`] = `
+<div>
+  <div
+    class="App"
+  >
+    <article
+      class="landing-container"
+    >
+      <h1
+        class="landing-text"
+      >
+        The World's Kitchen. Straight To Your Door.
+      </h1>
+      <a
+        href="/shop"
+      >
+        <button
+          class="shop-btn"
+        >
+          Shop Now
+        </button>
+      </a>
+    </article>
+  </div>
+</div>
+`;

@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  overflow: hidden;
+}
+
 /* -------- NAV STYLES -------- */
 .nav-list {
   background-color: black;
@@ -61,4 +65,10 @@
   box-shadow: 1px 1px 5px 5px rgb(204, 123, 29);
   cursor: pointer;
   letter-spacing: 0.5px;
+  transition: width height;
+}
+
+.shop-btn:hover {
+  width: 10.5rem;
+  height: 3.7rem;
 }
