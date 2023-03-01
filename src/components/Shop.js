@@ -12,9 +12,9 @@ const Shop = () => {
 
       // save the data into recipes state
       dishes.results.map(dish => {
-        setRecipes((prev) => [...prev, { title: dish.title, img: dish.image }]);
-      })
-    }
+        return setRecipes((prev) => [...prev, { title: dish.title, img: dish.image }]);
+      });
+    };
 
     getShopItems();
   }, []);
@@ -23,21 +23,23 @@ const Shop = () => {
 
   return (
     <section>
-      <h1>The Good Stuff</h1>
-      <label htmlFor="recipes">
-        Search Recipes: 
-        <input id="recipes" />
-      </label>
-      <article>
-      {recipes.map(recipe => {
-        return (
-          <Card
-            recipes={recipes}
-            dish={recipe.title}
-            dishImage={recipe.img}
-          />
-        )
-      })}
+      <article className="shop-container">
+        <h1 id='shop-title-text'>The Good Stuff</h1>
+        <label htmlFor="dishes-search">
+          Search Dishes: 
+          <input id="dishes-search" />
+        </label>
+      </article>
+      <article className='card-container'>
+        {recipes.map(recipe => {
+          return (
+            <Card
+              recipes={recipes}
+              dish={recipe.title}
+              dishImage={recipe.img}
+            />
+          )
+        })}
       </article>
     </section>
   );

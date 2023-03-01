@@ -1,7 +1,8 @@
 const Card = (props) => {
   return (
-    <div>
-      
+    <div className="card">
+      <img className="card-dish-image" src={props.dishImage} alt="Food dish" />
+      {props.dish}
     </div>
   );
 }
