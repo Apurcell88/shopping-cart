@@ -1,8 +1,9 @@
 const Card = (props) => {
   return (
     <div className="card">
-      <img className="card-dish-image" src={props.dishImage} alt="Food dish" />
-      {props.dish}
+      <img className="card-item-image" src={props.itemImage} alt="Food dish" />
+      {props.item}
+      <h3>${props.price}</h3>
     </div>
   );
 }

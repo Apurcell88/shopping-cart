@@ -2,41 +2,59 @@ import { useEffect, useState } from 'react';
 import Card from './Card';
 
 const Shop = () => {
-  const [recipes, setRecipes] = useState([]);
+  // recipes state
+  const [items, setItems] = useState([]);
+
+  // search state
+  const [searchState, setSearchState] = useState('');
 
   // make the api call
   useEffect(() => {
     async function getShopItems() {
-      const res = await fetch('https://api.spoonacular.com/recipes/complexSearch?apiKey=f30de92dacbc42659e6655da8dca76e9');
-      const dishes = await res.json();
+      const res = await fetch('https://fakestoreapi.com/products?limit=10');
+      const data = await res.json();
 
-      // save the data into recipes state
-      dishes.results.map(dish => {
-        return setRecipes((prev) => [...prev, { title: dish.title, img: dish.image }]);
-      });
+      setItems(data);
     };
 
     getShopItems();
-  }, []);
+  });
 
-  // console.log(recipes);
+  const handleChange = (e) => {
+    const value = e.target.value
+    setSearchState(value);
+    console.log(searchState);
+  }
+
+  const handleClick = () => {
+    // match the searchState with the recipe contained in recipes
+    
+  }
 
   return (
     <section>
       <article className="shop-container">
         <h1 id='shop-title-text'>The Good Stuff</h1>
-        <label htmlFor="dishes-search">
-          Search Dishes: 
-          <input id="dishes-search" />
+        <label htmlFor="items-search">
+           Search Products: 
+          <input 
+            id="items-search"
+            // value={searchState}
+            onChange={handleChange}
+          />
         </label>
+        <button onClick={handleClick}>Search</button>
       </article>
       <article className='card-container'>
-        {recipes.map(recipe => {
+        {items.map(item => {
           return (
             <Card
-              recipes={recipes}
-              dish={recipe.title}
-              dishImage={recipe.img}
+              key={item.id}
+              items={items}
+              item={item.title}
+              itemImage={item.image}
+              price={item.price}
+              id={item.id}
             />
           )
         })}
