@@ -6,7 +6,7 @@ const Shop = () => {
   const [items, setItems] = useState([]);
 
   // search state
-  const [searchState, setSearchState] = useState('');
+  const [searchState, setSearchState] = useState({ value: '' });
 
   // make the api call
   useEffect(() => {
@@ -20,44 +20,52 @@ const Shop = () => {
     getShopItems();
   });
 
-  const handleChange = (e) => {
-    const value = e.target.value
-    setSearchState(value);
-    console.log(searchState);
-  }
-
-  const handleClick = () => {
-    // match the searchState with the recipe contained in recipes
-    
-  }
-
   return (
     <section>
       <article className="shop-container">
         <h1 id='shop-title-text'>The Good Stuff</h1>
-        <label htmlFor="items-search">
-           Search Products: 
-          <input 
-            id="items-search"
-            // value={searchState}
-            onChange={handleChange}
-          />
-        </label>
-        <button onClick={handleClick}>Search</button>
+          <label htmlFor="items-search">
+            Search Products: 
+            <input
+              placeholder='Search Products' 
+              id="items-search"
+              onChange={(e) => {
+                setSearchState({ value: e.target.value })
+                // console.log(searchState.value)
+              }}
+              value={searchState.value}
+            />
+          </label>
       </article>
       <article className='card-container'>
-        {items.map(item => {
-          return (
-            <Card
-              key={item.id}
-              items={items}
-              item={item.title}
-              itemImage={item.image}
-              price={item.price}
-              id={item.id}
-            />
-          )
-        })}
+        {searchState.value === '' ?
+          items.map(item => {
+            return (
+              <Card
+                key={item.id}
+                items={items}
+                item={item.title}
+                itemImage={item.image}
+                price={item.price}
+                id={item.id}
+              />
+            )
+          }) :
+          items.map(item => {
+            if (item.title === searchState.value) {
+              return (
+                <Card
+                key={item.id}
+                items={items}
+                item={item.title}
+                itemImage={item.image}
+                price={item.price}
+                id={item.id}
+                />
+              )
+            }
+          })
+        }
       </article>
     </section>
   );
