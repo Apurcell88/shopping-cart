@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react';
 import Card from './Card';
 
 const Shop = () => {
-  // recipes state
+  // inventory state
   const [items, setItems] = useState([]);
+
+  // search input state
+  const [searchInput, setSearchInput] = useState('');
 
   // search state
   const [searchState, setSearchState] = useState({ value: '' });
@@ -20,22 +23,34 @@ const Shop = () => {
     getShopItems();
   });
 
+  const handleChange = (e) => {
+    setSearchInput(e.target.value);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSearchState({ value: searchInput });
+    // setSearchInput('');
+  }
+
   return (
     <section>
       <article className="shop-container">
         <h1 id='shop-title-text'>The Good Stuff</h1>
-          <label htmlFor="items-search">
-            Search Products: 
-            <input
-              placeholder='Search Products' 
-              id="items-search"
-              onChange={(e) => {
-                setSearchState({ value: e.target.value })
-                // console.log(searchState.value)
-              }}
-              value={searchState.value}
-            />
-          </label>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="items-search">
+              Search Products: 
+              <input
+                placeholder='Search Products' 
+                id="items-search"
+                onChange={handleChange}
+                // value={searchState.value}
+                value={searchInput}
+              />
+            </label>
+            <button className='search-btn'>Search</button>
+          </form>
+          <button className='view-all-inventory-btn'>View All Inventory</button>
       </article>
       <article className='card-container'>
         {searchState.value === '' ?
