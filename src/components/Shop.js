@@ -33,6 +33,11 @@ const Shop = () => {
     // setSearchInput('');
   }
 
+  const viewInventory = () => {
+    setSearchState({ value: '' });
+    setSearchInput('');
+  }
+
   return (
     <section>
       <article className="shop-container">
@@ -50,7 +55,12 @@ const Shop = () => {
             </label>
             <button className='search-btn'>Search</button>
           </form>
-          <button className='view-all-inventory-btn'>View All Inventory</button>
+          <button
+            className='view-all-inventory-btn'
+            onClick={viewInventory}
+          >
+            View All Inventory
+          </button>
       </article>
       <article className='card-container'>
         {searchState.value === '' ?

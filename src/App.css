@@ -80,7 +80,8 @@ body {
   align-items: center;
   justify-content: center;
   gap: 20px;
-  height: 15vh;
+  height: 20vh;
+  margin-top: 1rem;
 }
 
 #shop-title-text {
@@ -102,7 +103,40 @@ label {
   box-shadow: 1px 1px 5px 2px rgb(204, 123, 29);
 }
 
+.search-btn {
+  margin-left: 0.3rem;
+  width: 4.5rem;
+  height: 1.6rem;
+  border: none;
+  border-radius: 5px;
+  background: black;
+  color: white;
+  transition: background 0.3s;
+}
+
+.search-btn:hover {
+  background: rgb(204, 123, 29);
+}
+
+.view-all-inventory-btn {
+  padding: 0 0.5rem;
+  height: 2rem;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.view-all-inventory-btn:hover {
+  background-color: rgb(204, 123, 29);
+}
+
 /* -------- CARD STYLES -------- */
+.card-container {
+  margin-top: 1rem;
+}
+
 .card {
   display: flex;
   flex-direction: column;
