@@ -1,18 +1,11 @@
 import React from 'react';
-import {
-  BrowserRouter,
-  Route,
-  Link
-} from 'react-router-dom';
 import './App.css';
 
 function App() {
   return (
-    <BrowserRouter>
-      <nav>
-        
-      </nav>
-    </BrowserRouter>
+    <div>
+      <h1>Hello from App</h1>
+    </div>
   );
 }
 
