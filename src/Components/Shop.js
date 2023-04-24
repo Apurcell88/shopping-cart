@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import Header from './Nav';
+// import Card from './Card';
 
 const Shop = () => {
   // -------- STATE MANAGEMENT --------
@@ -20,6 +21,7 @@ const Shop = () => {
     const options = {
       method: 'GET',
       headers: {
+        'content-type': 'application/octet-stream',
         'X-RapidAPI-Key': 'f7772c35fcmshc2bdac112772643p1474b7jsna0cb7709afa1',
         'X-RapidAPI-Host': 'computer-components-api.p.rapidapi.com'
       }
@@ -29,6 +31,7 @@ const Shop = () => {
     const getPowerSupplies = async () => {
       const res = await fetch('https://computer-components-api.p.rapidapi.com/power_supply?limit=5&offset=0', options);
       const data = await res.json();
+      console.log(data);
 
       setPowerSupplies(data);
     }
@@ -88,6 +91,7 @@ const Shop = () => {
               return (
                 <div className="power-supplies" key={supply.id}>
                   <h3>{supply.title}</h3>
+                  {/* <Card title={supply.title} /> */}
                 </div>
               )
             }) :
@@ -99,6 +103,7 @@ const Shop = () => {
               return (
                 <div key={fan.id}>
                   <h3>{fan.title}</h3>
+                  {/* <Card title={fan.title} /> */}
                 </div>
               )
             }) :
