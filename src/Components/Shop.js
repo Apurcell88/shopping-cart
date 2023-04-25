@@ -1,55 +1,62 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import Header from './Nav';
-// import Card from './Card';
+import Card from './Card';
 
 const Shop = () => {
   // -------- STATE MANAGEMENT --------
 
-  // power supplies related states
-  const [powerSupplies, setPowerSupplies] = useState([]);
-  const [displayPowerSupplies, setDisplayPowerSupplies] = useState(false);
+  // jewelry related states
+  const [jewelry, setJewelry] = useState([]);
+  const [displayJewelry, setDisplayJewelry] = useState(false);
 
-  // case fans related states
-  const [caseFans, setCaseFans] = useState([]);
-  const [displayCaseFans, setDisplayCaseFans] = useState(false);
+  // electronics related states
+  const [electronics, setElectronics] = useState([]);
+  const [displayElectronics, setDisplayElectronics] = useState(false);
+
+  // men's clothing related states
+  const [menClothing, setMenClothing] = useState([]);
+  const [displayMenClothing, setDisplayMenClothing] = useState(false);
+
+  // women's clothing related states
+  const [womenClothing, setWomenClothing] = useState([]);
+  const [displayWomenClothing, setDisplayWomenClothing] = useState(false);
 
 
   // -------- API CALLS --------
 
   useEffect(() => {
-    const options = {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/octet-stream',
-        'X-RapidAPI-Key': 'f7772c35fcmshc2bdac112772643p1474b7jsna0cb7709afa1',
-        'X-RapidAPI-Host': 'computer-components-api.p.rapidapi.com'
-      }
-    };
+    // fetch jewelry from API
+    const getJewelry = async () => {
+      const res = await fetch('https://fakestoreapi.com/products/category/jewelery');
+      const data = await res.json();
+      // console.log(data);
 
-    // fetch power supplies from API
-    const getPowerSupplies = async () => {
-      const res = await fetch('https://computer-components-api.p.rapidapi.com/power_supply?limit=5&offset=0', options);
+      setJewelry(data);
+    }
+
+    // fetch electronics from API
+    const getElectronics = async () => {
+      const res = await fetch('https://fakestoreapi.com/products/category/electronics');
+      const data = await res.json();
+      // console.log(data);
+
+      setElectronics(data);
+    }
+
+    // fetch men's clothing from API
+    const getMenClothing = async () => {
+      const res = await fetch("https://fakestoreapi.com/products/category/men's clothing");
       const data = await res.json();
       console.log(data);
 
-      setPowerSupplies(data);
+      setMenClothing(data);
     }
 
-    // fetch case fans from API
-    const getCaseFans = async () => {
-      const res = await fetch('https://computer-components-api.p.rapidapi.com/case_fan?limit=5&offset=0', options);
-      const data = await res.json();
-
-      setCaseFans(data);
-    }
-
-    getPowerSupplies();
-    getCaseFans();
+    getJewelry();
+    getElectronics();
+    getMenClothing();
   }, []);
-  // console.log(powerSupplies)
-
-  // fetch case fans from API
 
   return (
     <div>
@@ -57,53 +64,79 @@ const Shop = () => {
       <div className="shop-container">
         <div className="shop-categories-container">
           <ul className='shop-categories'>
-            {/* onClick display the powerSupplies state. Write function for it? */}
             <li>
               <button onClick={() => {
-                setDisplayCaseFans(false);
-                setDisplayPowerSupplies(!displayPowerSupplies)}
+                setDisplayJewelry(false);
+                setDisplayMenClothing(false);
+                setDisplayElectronics(!displayElectronics)}
               }>
-                Power Supplies
+                Electronics
               </button>
             </li>
             <li>
               <button onClick={() => {
-                setDisplayPowerSupplies(false);
-                setDisplayCaseFans(!displayCaseFans);
+                setDisplayElectronics(false);
+                setDisplayMenClothing(false);
+                setDisplayJewelry(!displayJewelry);
               }}>
-                Case Fans
+                Jewelry
               </button>
             </li>
-            <li>Ram</li>
-            <li>Mouses</li>
-            <li>Keyboards</li>
-            <li>CPU Fans</li>
-            <li>Cases</li>
-            <li>Storage</li>
-            <li>Processors</li>
-            <li>GPUs</li>
-            <li>Motherboards</li>
+            <li>
+              <button onClick={() => {
+                setDisplayElectronics(false);
+                setDisplayJewelry(false);
+                setDisplayMenClothing(!displayMenClothing);
+              }}>
+                Men's Clothing
+              </button>
+            </li>
+            <li>Women's Clothing</li>
           </ul>
         </div>
         <div className="shop-items-container">
-          {displayPowerSupplies ?
-            powerSupplies.map((supply) => {
+          {displayElectronics ?
+            electronics.map((item) => {
               return (
-                <div className="power-supplies" key={supply.id}>
-                  <h3>{supply.title}</h3>
-                  {/* <Card title={supply.title} /> */}
+                <div className="power-supplies" key={item.id}>
+                  <Card
+                    title={item.title} 
+                    image={item.image}
+                    description={item.description}
+                    price={item.price}
+                  />
                 </div>
               )
             }) :
             ''
           }
 
-          {displayCaseFans ?
-            caseFans.map((fan) => {
+          {displayJewelry ?
+            jewelry.map((item) => {
               return (
-                <div key={fan.id}>
-                  <h3>{fan.title}</h3>
-                  {/* <Card title={fan.title} /> */}
+                <div key={item.id}>
+                  <Card
+                    title={item.title}
+                    image={item.image}
+                    description={item.description}
+                    price={item.price}
+                  />
+                </div>
+              )
+            }) :
+            ''
+          }
+
+          {displayMenClothing ?
+            menClothing.map((item) => {
+              return (
+                <div key={item.id}>
+                  <Card
+                    title={item.title}
+                    image={item.image}
+                    description={item.description}
+                    price={item.price}
+                  />
                 </div>
               )
             }) :
