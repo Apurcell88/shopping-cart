@@ -48,14 +48,22 @@ const Shop = () => {
     const getMenClothing = async () => {
       const res = await fetch("https://fakestoreapi.com/products/category/men's clothing");
       const data = await res.json();
-      console.log(data);
 
       setMenClothing(data);
+    }
+
+    // fetch women's clothing from API
+    const getWomenClothing = async () => {
+      const res = await fetch("https://fakestoreapi.com/products/category/women's clothing");
+      const data = await res.json();
+      
+      setWomenClothing(data);
     }
 
     getJewelry();
     getElectronics();
     getMenClothing();
+    getWomenClothing();
   }, []);
 
   return (
@@ -68,6 +76,7 @@ const Shop = () => {
               <button onClick={() => {
                 setDisplayJewelry(false);
                 setDisplayMenClothing(false);
+                setDisplayWomenClothing(false);
                 setDisplayElectronics(!displayElectronics)}
               }>
                 Electronics
@@ -77,6 +86,7 @@ const Shop = () => {
               <button onClick={() => {
                 setDisplayElectronics(false);
                 setDisplayMenClothing(false);
+                setDisplayWomenClothing(false);
                 setDisplayJewelry(!displayJewelry);
               }}>
                 Jewelry
@@ -86,12 +96,23 @@ const Shop = () => {
               <button onClick={() => {
                 setDisplayElectronics(false);
                 setDisplayJewelry(false);
+                setDisplayWomenClothing(false);
                 setDisplayMenClothing(!displayMenClothing);
               }}>
                 Men's Clothing
               </button>
             </li>
-            <li>Women's Clothing</li>
+            <li>
+              <button onClick={() => {
+                setDisplayElectronics(false);
+                setDisplayJewelry(false);
+                setDisplayMenClothing(false);
+                setDisplayWomenClothing(!displayWomenClothing);
+              }}
+              >
+                Women's Clothing
+              </button>
+            </li>
           </ul>
         </div>
         <div className="shop-items-container">
@@ -105,6 +126,7 @@ const Shop = () => {
                     description={item.description}
                     price={item.price}
                   />
+                  <button>Add to cart</button>
                 </div>
               )
             }) :
@@ -121,6 +143,7 @@ const Shop = () => {
                     description={item.description}
                     price={item.price}
                   />
+                  <button>Add to cart</button>
                 </div>
               )
             }) :
@@ -137,6 +160,24 @@ const Shop = () => {
                     description={item.description}
                     price={item.price}
                   />
+                  <button>Add to cart</button>
+                </div>
+              )
+            }) :
+            ''
+          }
+
+          {displayWomenClothing ?
+            womenClothing.map((item) => {
+              return (
+                <div key={item.id}>
+                  <Card
+                    title={item.title}
+                    image={item.image}
+                    description={item.description}
+                    price={item.price}
+                  />
+                  <button>Add to cart</button>
                 </div>
               )
             }) :
