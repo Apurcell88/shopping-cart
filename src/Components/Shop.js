@@ -1,5 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import Header from './Nav';
 import Card from './Card';
 
@@ -114,6 +116,11 @@ const Shop = () => {
               </button>
             </li>
           </ul>
+          <div>
+            <button>
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </button>
+          </div>
         </div>
         <div className="shop-items-container">
           {displayElectronics ?
