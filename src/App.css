@@ -42,6 +42,12 @@ table {
 	border-spacing: 0;
 }
 
+/* --------------- NAV ---------------  */
+.nav-text {
+	color: #e1ad01;
+}
+
+
 /* --------------- LANDING PAGE ---------------  */
 .landing-container {
   height: 100vh;
@@ -72,3 +78,59 @@ table {
 }
 
 /* --------------- SHOP PAGE ---------------  */
+.shop-container {
+	display: flex;
+	width: 100vw;
+	margin-top: 1rem;
+}
+
+.shop-categories-list {
+	cursor: pointer;
+	position: sticky;
+	top: 4.5rem;
+}
+
+.category {
+	margin-bottom: 0.3rem;
+}
+
+.shop-items-container {
+	width: 70vw;
+}
+
+.shop-item {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.add-to-cart-btn {
+	margin: 0 auto;
+	margin-bottom: 3rem;
+	margin-top: 0.5rem;
+}
+
+/* --------------- CARDS ---------------  */
+.card-container {
+	width: 50vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-left: 2.3rem;
+	padding-right: 1rem;
+}
+
+.card-title {
+	font-size: 1rem;
+}
+
+.card-product-image {
+	width: 35vw;
+	margin-top: 1rem;
+}
+
+.card-description {
+	font-size: 0.8rem;
+	margin-top: 1rem;
+	text-align: center;
+}

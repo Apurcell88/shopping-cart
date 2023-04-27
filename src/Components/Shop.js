@@ -73,49 +73,42 @@ const Shop = () => {
       <Header />
       <div className="shop-container">
         <div className="shop-categories-container">
-          <ul className='shop-categories'>
-            <li>
-              <button onClick={() => {
+          <div className='shop-categories-list'>
+            <ul>
+              <li className='category' onClick={() => {
                 setDisplayJewelry(false);
                 setDisplayMenClothing(false);
                 setDisplayWomenClothing(false);
-                setDisplayElectronics(!displayElectronics)}
-              }>
+                setDisplayElectronics(!displayElectronics);
+              }}>
                 Electronics
-              </button>
-            </li>
-            <li>
-              <button onClick={() => {
+              </li>
+              <li className='category' onClick={() => {
                 setDisplayElectronics(false);
                 setDisplayMenClothing(false);
                 setDisplayWomenClothing(false);
                 setDisplayJewelry(!displayJewelry);
               }}>
                 Jewelry
-              </button>
-            </li>
-            <li>
-              <button onClick={() => {
+              </li>
+              <li className='category' onClick={() => {
                 setDisplayElectronics(false);
                 setDisplayJewelry(false);
-                setDisplayWomenClothing(false);
-                setDisplayMenClothing(!displayMenClothing);
+               setDisplayWomenClothing(false);
+                setDisplayMenClothing(!displayMenClothing)
               }}>
-                Men's Clothing
-              </button>
-            </li>
-            <li>
-              <button onClick={() => {
+               Men's Clothing
+              </li>
+              <li className='category' onClick={() => {
                 setDisplayElectronics(false);
                 setDisplayJewelry(false);
                 setDisplayMenClothing(false);
                 setDisplayWomenClothing(!displayWomenClothing);
-              }}
-              >
+              }}>
                 Women's Clothing
-              </button>
-            </li>
-          </ul>
+              </li>
+            </ul>
+          </div>
           <div>
             <button>
               <FontAwesomeIcon icon={faMagnifyingGlass} />
@@ -126,14 +119,14 @@ const Shop = () => {
           {displayElectronics ?
             electronics.map((item) => {
               return (
-                <div className="power-supplies" key={item.id}>
+                <div className="shop-item" key={item.id}>
                   <Card
                     title={item.title} 
                     image={item.image}
                     description={item.description}
                     price={item.price}
                   />
-                  <button>Add to cart</button>
+                  <button className='add-to-cart-btn'>Add to cart</button>
                 </div>
               )
             }) :
@@ -143,14 +136,14 @@ const Shop = () => {
           {displayJewelry ?
             jewelry.map((item) => {
               return (
-                <div key={item.id}>
+                <div className="shop-item" key={item.id}>
                   <Card
                     title={item.title}
                     image={item.image}
                     description={item.description}
                     price={item.price}
                   />
-                  <button>Add to cart</button>
+                  <button className='add-to-cart-btn'>Add to cart</button>
                 </div>
               )
             }) :
@@ -160,14 +153,14 @@ const Shop = () => {
           {displayMenClothing ?
             menClothing.map((item) => {
               return (
-                <div key={item.id}>
+                <div className="shop-item" key={item.id}>
                   <Card
                     title={item.title}
                     image={item.image}
                     description={item.description}
                     price={item.price}
                   />
-                  <button>Add to cart</button>
+                  <button className='add-to-cart-btn'>Add to cart</button>
                 </div>
               )
             }) :
@@ -177,14 +170,14 @@ const Shop = () => {
           {displayWomenClothing ?
             womenClothing.map((item) => {
               return (
-                <div key={item.id}>
+                <div className="shop-item" key={item.id}>
                   <Card
                     title={item.title}
                     image={item.image}
                     description={item.description}
                     price={item.price}
                   />
-                  <button>Add to cart</button>
+                  <button className='add-to-cart-btn'>Add to cart</button>
                 </div>
               )
             }) :
