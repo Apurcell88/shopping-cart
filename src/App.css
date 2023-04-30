@@ -17,6 +17,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -45,6 +46,13 @@ table {
 /* --------------- NAV ---------------  */
 .nav-text {
 	color: #e1ad01;
+}
+
+.search-btn {
+	font-size: 1.5rem;
+	color: white;
+	background: transparent;
+	border: none;
 }
 
 
@@ -105,9 +113,11 @@ table {
 }
 
 .add-to-cart-btn {
-	margin: 0 auto;
 	margin-bottom: 3rem;
 	margin-top: 0.5rem;
+	margin-right: 3rem;
+	border-radius: 10px;
+	padding: 0.3rem 1rem;
 }
 
 /* --------------- CARDS ---------------  */
