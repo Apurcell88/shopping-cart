@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 // import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import Header from './Nav';
 import Card from './Card';
+import Search from './Search';
 
 const Shop = () => {
   // -------- STATE MANAGEMENT --------
@@ -24,6 +25,8 @@ const Shop = () => {
   const [womenClothing, setWomenClothing] = useState([]);
   const [displayWomenClothing, setDisplayWomenClothing] = useState(false);
 
+  // search related state
+  const [search, setSearch] = useState(false);
 
   // -------- API CALLS --------
 
@@ -70,7 +73,17 @@ const Shop = () => {
 
   return (
     <div>
-      <Header />
+      <Header 
+        search={search}
+        setSearch={setSearch} 
+      />
+      {search ?
+        <Search
+          search={search}
+          setSearch={setSearch}
+        /> :
+        ''
+      }
       <div className="shop-container">
         <div className="shop-categories-container">
           <div className='shop-categories-list'>

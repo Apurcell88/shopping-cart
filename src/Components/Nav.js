@@ -6,14 +6,19 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-const Header = () => {
+const Header = (props) => {
   return (
     <Navbar sticky="top" bg="dark" expand="md" variant="dark">
       <Container>
         <Navbar.Brand className='nav-text'>Razor Edge PC</Navbar.Brand>
         <div>
-            {/* make button have onClick that toggles the search component */}
-            <button className='search-btn'> 
+            {/* make button have onClick that toggles the search state */}
+            <button
+              className='search-btn'
+              onClick={() => {
+                props.setSearch(!props.search);
+              }}
+            > 
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
           </div>
