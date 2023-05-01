@@ -27,6 +27,7 @@ const Shop = () => {
 
   // search related state
   const [search, setSearch] = useState(false);
+  const [searchInput, setSearchInput] = useState('');
 
   // -------- API CALLS --------
 
@@ -79,8 +80,18 @@ const Shop = () => {
       />
       {search ?
         <Search
+          setDisplayJewelry={setDisplayJewelry}
+          setDisplayElectronics={setDisplayElectronics}
+          setDisplayMenClothing={setDisplayMenClothing}
+          setDisplayWomenClothing={setDisplayWomenClothing}
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
           search={search}
           setSearch={setSearch}
+          jewelry={jewelry}
+          electronics={electronics}
+          menClothing={menClothing}
+          womenClothing={womenClothing}
         /> :
         ''
       }
@@ -126,17 +137,17 @@ const Shop = () => {
         <div className="shop-items-container">
           {displayElectronics ?
             electronics.map((item) => {
-              return (
-                <div className="shop-item" key={item.id}>
-                  <Card
-                    title={item.title} 
-                    image={item.image}
-                    description={item.description}
-                    price={item.price}
-                  />
-                  <button className='add-to-cart-btn'>Add to cart</button>
-                </div>
-              )
+                return (
+                  <div className="shop-item" key={item.id}>
+                    <Card
+                      title={item.title} 
+                      image={item.image}
+                      description={item.description}
+                      price={item.price}
+                    />
+                    <button className='add-to-cart-btn'>Add to cart</button>
+                  </div>
+                )
             }) :
             ''
           }
@@ -160,17 +171,17 @@ const Shop = () => {
 
           {displayMenClothing ?
             menClothing.map((item) => {
-              return (
-                <div className="shop-item" key={item.id}>
-                  <Card
-                    title={item.title}
-                    image={item.image}
-                    description={item.description}
-                    price={item.price}
-                  />
-                  <button className='add-to-cart-btn'>Add to cart</button>
-                </div>
-              )
+                return (
+                  <div className="shop-item" key={item.id}>
+                    <Card
+                      title={item.title}
+                      image={item.image}
+                      description={item.description}
+                      price={item.price}
+                    />
+                    <button className='add-to-cart-btn'>Add to cart</button>
+                  </div>
+                )
             }) :
             ''
           }
