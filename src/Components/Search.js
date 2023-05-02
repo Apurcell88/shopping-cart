@@ -25,21 +25,7 @@ const Search = (props) => {
          </button>
       </div>
     );
-  } else {
-    props.electronics.map(item => {
-      if (item.title == props.searchInput) {
-        return (
-          <div className="shop-item">
-            <Card
-              title={item.title} 
-              image={item.image}
-              description={item.description}
-              price={item.price}
-            />
-          </div>
-        )
-      }
-    })
+  }
 
     props.menClothing.map(item => {
       if (item.title == props.searchInput) {
@@ -55,7 +41,6 @@ const Search = (props) => {
         )
       }
     })
-  }
 }
  
 export default Search;
