@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -19,7 +19,15 @@ const Header = (props) => {
                 props.setSearch(!props.search);
               }}
             > 
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
+              <FontAwesomeIcon className='nav-icon' icon={faMagnifyingGlass} />
+            </button>
+            <button
+              className='search-btn'
+              onClick={() => {
+                props.setDisplayCart(!props.displayCart);
+              }}
+            > 
+              <FontAwesomeIcon className='nav-icon' icon={faCartShopping} />
             </button>
           </div>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

@@ -55,6 +55,10 @@ table {
 	border: none;
 }
 
+.nav-icon {
+	margin: 0 1rem;
+}
+
 
 /* --------------- LANDING PAGE ---------------  */
 .landing-container {

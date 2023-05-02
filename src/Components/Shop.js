@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import Header from './Nav';
 import Card from './Card';
 import Search from './Search';
+import Cart from './Cart';
 
 const Shop = () => {
   // -------- STATE MANAGEMENT --------
@@ -28,6 +29,10 @@ const Shop = () => {
   // search related state
   const [search, setSearch] = useState(false);
   const [searchInput, setSearchInput] = useState('');
+
+  // cart related state
+  const [cart, setCart] = useState([]);
+  const [displayCart, setDisplayCart] = useState(false);
 
   // -------- API CALLS --------
 
@@ -72,11 +77,22 @@ const Shop = () => {
     getWomenClothing();
   }, []);
 
+  // -------- FUNCTIONS --------
+
+  // add to cart function
+  const handleCart = (arr) => {
+    // have to add the object to the setCart array
+    setCart(...cart, {});
+    console.log(cart);
+  }
+
   return (
     <div>
       <Header 
         search={search}
-        setSearch={setSearch} 
+        setSearch={setSearch}
+        displayCart={displayCart}
+        setDisplayCart={setDisplayCart} 
       />
       {search ?
         <Search
@@ -95,6 +111,15 @@ const Shop = () => {
         /> :
         ''
       }
+
+      {displayCart ?
+        <Cart
+          cart={cart}
+          setCart={setCart}
+        /> :
+        ''
+      }
+
       <div className="shop-container">
         <div className="shop-categories-container">
           <div className='shop-categories-list'>
@@ -145,7 +170,14 @@ const Shop = () => {
                       description={item.description}
                       price={item.price}
                     />
-                    <button className='add-to-cart-btn'>Add to cart</button>
+                    <button
+                      className='add-to-cart-btn'
+                      onClick={() => {
+                        handleCart(electronics);
+                      }}
+                    >
+                      Add to cart
+                    </button>
                   </div>
                 )
             }) :
