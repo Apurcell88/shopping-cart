@@ -15,7 +15,7 @@ const Search = (props) => {
         <button onClick={() => {
           props.setSearchInput(props.searchInput)
           props.setSearch(!props.search); // this is always displaying as true, problem
-          console.log(props.search)
+          // console.log(props.search)
           props.setDisplayJewelry(false);
           props.setDisplayElectronics(false);
           props.setDisplayMenClothing(false);

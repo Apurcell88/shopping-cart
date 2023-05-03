@@ -179,3 +179,44 @@ table {
 .search-input {
 	margin-right: 0.2rem;
 }
+
+/* --------------- CART CARD---------------  */
+.cart-card-container {
+	width: 100vw;
+	height: 20vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+}
+
+.cart-card-title {
+	font-size: 0.8rem;
+	width: 30%;
+}
+
+.cart-card-product-image {
+	width: 20vw;
+	margin-top: 0.8rem;
+	padding-right: 1rem;
+}
+
+.cart-card-price {
+	font-size: 1rem;
+}
+
+/* --------------- CART PAGE---------------  */
+
+.cart-container {
+	width: 100%;
+	height: 100vh;
+	color: white;
+	background-color: blueviolet;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: absolute;
+	top: 15;
+	left: 0;
+	animation: slide 1s;
+}

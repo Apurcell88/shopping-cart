@@ -80,9 +80,12 @@ const Shop = () => {
   // -------- FUNCTIONS --------
 
   // add to cart function
-  const handleCart = (arr) => {
-    // have to add the object to the setCart array
-    setCart(...cart, {});
+  const handleCart = (arr, id) => {
+    arr.map(item => {
+      if (id === item.id) {
+        setCart([...cart, item]);
+      }
+    });
     console.log(cart);
   }
 
@@ -93,6 +96,10 @@ const Shop = () => {
         setSearch={setSearch}
         displayCart={displayCart}
         setDisplayCart={setDisplayCart} 
+        // setDisplayElectronics={setDisplayElectronics}
+        // setDisplayJewelry={setDisplayJewelry}
+        // setDisplayMenClothing={setDisplayMenClothing}
+        // setDisplayWomenClothing={setDisplayWomenClothing}
       />
       {search ?
         <Search
@@ -173,7 +180,7 @@ const Shop = () => {
                     <button
                       className='add-to-cart-btn'
                       onClick={() => {
-                        handleCart(electronics);
+                        handleCart(electronics, item.id);
                       }}
                     >
                       Add to cart
@@ -194,7 +201,14 @@ const Shop = () => {
                     description={item.description}
                     price={item.price}
                   />
-                  <button className='add-to-cart-btn'>Add to cart</button>
+                  <button
+                    className='add-to-cart-btn'
+                    onClick={() => {
+                      handleCart(jewelry, item.id);
+                    }}
+                  >
+                    Add to cart
+                  </button>
                 </div>
               )
             }) :
@@ -211,7 +225,14 @@ const Shop = () => {
                       description={item.description}
                       price={item.price}
                     />
-                    <button className='add-to-cart-btn'>Add to cart</button>
+                    <button
+                      className='add-to-cart-btn'
+                      onClick={() => {
+                        handleCart(menClothing, item.id);
+                      }}
+                    >
+                      Add to cart
+                    </button>
                   </div>
                 )
             }) :
@@ -228,7 +249,14 @@ const Shop = () => {
                     description={item.description}
                     price={item.price}
                   />
-                  <button className='add-to-cart-btn'>Add to cart</button>
+                  <button
+                    className='add-to-cart-btn'
+                    onClick={() => {
+                      handleCart(womenClothing, item.id);
+                    }}
+                  >
+                    Add to cart
+                  </button>
                 </div>
               )
             }) :

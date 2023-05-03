@@ -12,7 +12,6 @@ const Header = (props) => {
       <Container>
         <Navbar.Brand className='nav-text'>Razor Edge PC</Navbar.Brand>
         <div>
-            {/* make button have onClick that toggles the search state */}
             <button
               className='search-btn'
               onClick={() => {
