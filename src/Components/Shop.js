@@ -123,6 +123,7 @@ const Shop = () => {
         <Cart
           cart={cart}
           setCart={setCart}
+          displayCart={displayCart}
         /> :
         ''
       }

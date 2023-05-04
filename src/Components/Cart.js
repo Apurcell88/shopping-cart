@@ -1,8 +1,18 @@
 import CartCard from "./CartCard";
 
 const Cart = (props) => {
+  // calculate subtotal function
+  const calcTotal = () => {
+    let total = 0;
+    // take items in cart and add their prices together
+    props.cart.map(item => {
+       return total += item.price;
+    });
+    return total.toFixed(2);
+  };
+
   return (
-    <div className="cart-container">
+    <div className={props.displayCart ? "cart-container" : "collapse-cart-container"}>
       <div>
         <h1>Your Shopping Bag</h1>
       </div>
@@ -16,10 +26,10 @@ const Cart = (props) => {
         )
       })}
       <div>
-        <h3>Subtotal: $</h3>
+        <h3>Subtotal: ${calcTotal()}</h3>
       </div>
       <div>
-        <button>CHECKOUT</button>
+        <button className="checkout-btn">CHECKOUT</button>
       </div>
     </div>
   );

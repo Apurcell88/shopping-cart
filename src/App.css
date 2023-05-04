@@ -154,7 +154,7 @@ table {
 .search-container {
 	width: 100vw;
 	height: 100%;
-	background-color: blueviolet;
+	background-color: #e1ad01;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -212,7 +212,7 @@ table {
 	width: 100vw;
 	height: 100%;
 	color: white;
-	background-color: blueviolet;
+	background-color: #e1ad01;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -224,4 +224,19 @@ table {
 	animation: slide 1s;
 	letter-spacing: 1px;
 	z-index: 99;
+}
+
+.collapse-cart-container {
+	animation: collapse 1s;
+}
+
+@keyframes collapse {
+	
+}
+
+.checkout-btn {
+	border-radius: 12px;
+	margin-top: 0.6rem;
+	border: none;
+	padding: 0.6rem;
 }

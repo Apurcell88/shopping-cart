@@ -24,6 +24,7 @@ const Header = (props) => {
               className='search-btn'
               onClick={() => {
                 props.setDisplayCart(!props.displayCart);
+                console.log(props.displayCart);
               }}
             > 
               <FontAwesomeIcon className='nav-icon' icon={faCartShopping} />
