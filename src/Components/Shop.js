@@ -34,6 +34,10 @@ const Shop = () => {
   const [cart, setCart] = useState([]);
   const [displayCart, setDisplayCart] = useState(false);
 
+  // updated states to include quantity
+  // update each state to include a quantity property
+  const [updatedJewelry, setUpdatedJewelry] = useState([]);
+
   // -------- API CALLS --------
 
   useEffect(() => {
@@ -44,6 +48,12 @@ const Shop = () => {
       // console.log(data);
 
       setJewelry(data);
+      
+      // move code below into Cart component? Having the state here is a problem
+      setUpdatedJewelry(jewelry.map(item => {
+       return {...item, quantity: 0}
+      }));
+      console.log(updatedJewelry);
     }
 
     // fetch electronics from API
@@ -124,6 +134,8 @@ const Shop = () => {
           cart={cart}
           setCart={setCart}
           displayCart={displayCart}
+          updatedJewelry={updatedJewelry}
+          setUpdatedJewelry={setUpdatedJewelry}
         /> :
         ''
       }
