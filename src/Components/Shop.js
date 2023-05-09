@@ -36,7 +36,7 @@ const Shop = () => {
 
   // updated states to include quantity
   // update each state to include a quantity property
-  const [updatedJewelry, setUpdatedJewelry] = useState([]);
+  // const [updatedJewelry, setUpdatedJewelry] = useState([]);
 
   // -------- API CALLS --------
 
@@ -50,10 +50,10 @@ const Shop = () => {
       setJewelry(data);
       
       // move code below into Cart component? Having the state here is a problem
-      setUpdatedJewelry(jewelry.map(item => {
-       return {...item, quantity: 0}
-      }));
-      console.log(updatedJewelry);
+      // setUpdatedJewelry(jewelry.map(item => {
+      //  return {...item, quantity: 0}
+      // }));
+      // console.log(updatedJewelry);
     }
 
     // fetch electronics from API
@@ -134,8 +134,10 @@ const Shop = () => {
           cart={cart}
           setCart={setCart}
           displayCart={displayCart}
-          updatedJewelry={updatedJewelry}
-          setUpdatedJewelry={setUpdatedJewelry}
+          jewelry={jewelry}
+          setJewelry={setJewelry}
+          // updatedJewelry={updatedJewelry}
+          // setUpdatedJewelry={setUpdatedJewelry}
         /> :
         ''
       }

@@ -1,6 +1,11 @@
+import { useState, useEffect } from 'react';
 import CartCard from "./CartCard";
 
 const Cart = (props) => {
+  // -------- CART STATE MANAGEMENT --------
+  const [updatedJewelry, setUpdatedJewelry] = useState([]);
+
+  // -------- CART FUNCTIONS --------
   // calculate subtotal function
   const calcTotal = () => {
     let total = 0;
@@ -10,6 +15,25 @@ const Cart = (props) => {
     });
     return total.toFixed(2);
   };
+
+  // add quantity property function
+  const addQualityProperty = (arr, updateState) => {
+    updateState(arr.map(item => {
+      return {...item, quantity: 0}
+     }));
+  }
+
+  // -------- USEEFFECT --------
+  useEffect(() => {
+    addQualityProperty(props.jewelry, setUpdatedJewelry);
+
+    console.log(updatedJewelry)
+  }, [updatedJewelry]);
+
+  // setUpdatedJewelry(props.jewelry.map(item => {
+  //   return {...item, quantity: 0}
+  //  }));
+  //  console.log(updatedJewelry);
 
   return (
     <div className={props.displayCart ? "cart-container" : "collapse-cart-container"}>
