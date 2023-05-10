@@ -134,10 +134,6 @@ const Shop = () => {
           cart={cart}
           setCart={setCart}
           displayCart={displayCart}
-          jewelry={jewelry}
-          setJewelry={setJewelry}
-          // updatedJewelry={updatedJewelry}
-          // setUpdatedJewelry={setUpdatedJewelry}
         /> :
         ''
       }

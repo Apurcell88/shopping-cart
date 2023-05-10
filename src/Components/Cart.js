@@ -3,7 +3,7 @@ import CartCard from "./CartCard";
 
 const Cart = (props) => {
   // -------- CART STATE MANAGEMENT --------
-  const [updatedJewelry, setUpdatedJewelry] = useState([]);
+  const [updatedCart, setUpdatedCart] = useState([]);
 
   // -------- CART FUNCTIONS --------
   // calculate subtotal function
@@ -16,36 +16,33 @@ const Cart = (props) => {
     return total.toFixed(2);
   };
 
-  // add quantity property function
-  const addQualityProperty = (arr, updateState) => {
-    updateState(arr.map(item => {
-      return {...item, quantity: 0}
-     }));
-  }
+  
 
   // -------- USEEFFECT --------
   useEffect(() => {
-    addQualityProperty(props.jewelry, setUpdatedJewelry);
+    // map over props.cart
+    setUpdatedCart(props.cart.map(item => {
+      return {...item, quantity: 1}
+    }));
+  }, []);
 
-    console.log(updatedJewelry)
-  }, [updatedJewelry]);
-
-  // setUpdatedJewelry(props.jewelry.map(item => {
-  //   return {...item, quantity: 0}
-  //  }));
-  //  console.log(updatedJewelry);
+  // console.log(updatedCart);
 
   return (
     <div className={props.displayCart ? "cart-container" : "collapse-cart-container"}>
       <div>
         <h1>Your Shopping Bag</h1>
       </div>
-      {props.cart.map(item => {
+      {updatedCart.map(item => {
+        
         return (
           <CartCard className="cart-card"
             title={item.title} 
             image={item.image}
             price={item.price}
+            quantity={item.quantity}
+            id={item.id}
+            // handleQuantityIncrease={handleQuantityIncrease}
           />
         )
       })}
