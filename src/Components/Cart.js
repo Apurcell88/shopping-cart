@@ -16,8 +16,6 @@ const Cart = (props) => {
     return total.toFixed(2);
   };
 
-  
-
   // -------- USEEFFECT --------
   useEffect(() => {
     // map over props.cart
@@ -42,6 +40,8 @@ const Cart = (props) => {
             price={item.price}
             quantity={item.quantity}
             id={item.id}
+            updatedCart={updatedCart}
+            setUpdatedCart={setUpdatedCart}
             // handleQuantityIncrease={handleQuantityIncrease}
           />
         )

@@ -1,12 +1,10 @@
 const CartCard = (props) => {
   // -------- FUNCTIONS --------
   // increase quantity function
-  const handleQuantityIncrease = (id) => {
-    props.updatedCart.map(item => {
-      if (item.id === id) {
-        item.quantity += 1;
-      }
-    })
+  const handleQuantityIncrease = (id) => { 
+    props.setUpdatedCart(props.updatedCart.map(item => {
+     return {...item, quantity: item.quantity + 1 };
+    }))
   }
 
   return (
@@ -22,7 +20,6 @@ const CartCard = (props) => {
           className="cart-quantity-btn"
           onClick={() => {
             handleQuantityIncrease(props.id)
-            console.log(props.quantity)
           }}
         >
           +
