@@ -1,10 +1,10 @@
 const CartCard = (props) => {
   // -------- FUNCTIONS --------
   // increase quantity function
-  const handleQuantityIncrease = (id) => { 
-    props.setUpdatedCart(props.updatedCart.map(item => {
-     return {...item, quantity: item.quantity + 1 };
-    }))
+  const handleQuantityIncrease = () => { 
+    props.setUpdatedCart((prev) => {
+      return { ...prev, quantity: prev.quantity + 1 };
+    })
   }
 
   return (
@@ -18,9 +18,7 @@ const CartCard = (props) => {
         <p>Quantity: {props.quantity}</p>
         <button
           className="cart-quantity-btn"
-          onClick={() => {
-            handleQuantityIncrease(props.id)
-          }}
+          onClick={handleQuantityIncrease}
         >
           +
         </button>

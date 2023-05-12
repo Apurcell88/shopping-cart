@@ -18,10 +18,13 @@ const Cart = (props) => {
 
   // -------- USEEFFECT --------
   useEffect(() => {
-    // map over props.cart
     setUpdatedCart(props.cart.map(item => {
       return {...item, quantity: 1}
     }));
+
+    // setUpdatedCart(prev => {
+    //   return {...prev, quantity: 1}
+    // })
   }, []);
 
   // console.log(updatedCart);
