@@ -226,6 +226,20 @@ table {
 	z-index: 99;
 }
 
+.close-cart-container {
+	width: 100vw;
+	/* display: flex;
+	justify-content: flex-end; */
+	position: fixed;
+	top: 60px;
+	left: 0px;
+}
+
+.close-cart-btn {
+	/* align-self: flex-start; */
+	/* margin-right: 1rem; */
+}
+
 .collapse-cart-container {
 	animation: collapse 1s;
 }

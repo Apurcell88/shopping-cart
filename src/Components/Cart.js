@@ -33,6 +33,16 @@ const Cart = (props) => {
 
   return (
     <div className={props.displayCart ? "cart-container" : "collapse-cart-container"}>
+      <div className='close-cart-container'>
+        <button
+          className='close-cart-btn'
+          onClick={() => {
+            props.setDisplayCart(false);
+          }}
+        >
+          X
+        </button>
+      </div>
       <div>
         <h1>Your Shopping Bag</h1>
       </div>

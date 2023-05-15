@@ -134,6 +134,7 @@ const Shop = () => {
           cart={cart}
           setCart={setCart}
           displayCart={displayCart}
+          setDisplayCart={setDisplayCart}
         /> :
         ''
       }
