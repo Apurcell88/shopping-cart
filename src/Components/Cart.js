@@ -27,7 +27,7 @@ const Cart = (props) => {
     // })
   }, []);
 
-  // console.log(updatedCart);
+  console.log(updatedCart);
 
   return (
     <div className={props.displayCart ? "cart-container" : "collapse-cart-container"}>
