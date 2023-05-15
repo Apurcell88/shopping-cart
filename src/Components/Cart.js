@@ -10,9 +10,11 @@ const Cart = (props) => {
   const calcTotal = () => {
     let total = 0;
     // take items in cart and add their prices together
-    props.cart.map(item => {
-       return total += item.price;
+    // update to include the quantity
+    updatedCart.map(item => {
+       return total += item.price * item.quantity;
     });
+    
     return total.toFixed(2);
   };
 
