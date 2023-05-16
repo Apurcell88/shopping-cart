@@ -43,8 +43,8 @@ const Cart = (props) => {
           X
         </button>
       </div>
-      <div>
-        <h1>Your Shopping Bag</h1>
+      <div className='cart-title-container'>
+        <h1 className='cart-title'>Your Shopping Bag</h1>
       </div>
       {updatedCart.map(item => {
         
