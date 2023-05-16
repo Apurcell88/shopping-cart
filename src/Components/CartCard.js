@@ -14,6 +14,7 @@ const CartCard = (props) => {
     props.setUpdatedCart(newState);
   }
 
+  // decrease quantity function
   const handleQuantityDecrease = (id) => { 
     const newState = props.updatedCart.map(item => {
       if (item.id === id && item.quantity > 0) {
@@ -25,6 +26,17 @@ const CartCard = (props) => {
     });
 
     props.setUpdatedCart(newState);
+  }
+
+  // remove from cart function
+  const handleCartRemoval = (id) => {
+    // check if id does not equal an id in the updatedCart array? This is throwing an error currently
+    props.setUpdatedCart((prev) => {
+      prev.filter((item) => {
+        return item.id !== id;
+      })
+    })
+    console.log(props.updatedCart);
   }
 
   return (
@@ -52,6 +64,16 @@ const CartCard = (props) => {
           }}
         >
           +
+        </button>
+      </div>
+      <div>
+        <button
+          className="cart-removal-btn"
+          onClick={() => {
+            handleCartRemoval(props.id);
+          }}
+        >
+          Remove
         </button>
       </div>
     </div>
