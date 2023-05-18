@@ -3,6 +3,8 @@ import CartCard from "./CartCard";
 
 const Cart = (props) => {
   // -------- CART STATE MANAGEMENT --------
+
+  // setCart now holds the quantity property so there's no more use for updatedCart. Delete this and adjust the code using it.
   const [updatedCart, setUpdatedCart] = useState([]);
 
   // -------- CART FUNCTIONS --------
@@ -20,16 +22,13 @@ const Cart = (props) => {
 
   // -------- USEEFFECT --------
   useEffect(() => {
-    setUpdatedCart(props.cart.map(item => {
-      return {...item, quantity: 1}
-    }));
+    // setUpdatedCart(props.cart.map(item => {
+    //   return {...item, quantity: 1}
+    // }));
 
-    // setUpdatedCart(prev => {
-    //   return {...prev, quantity: 1}
-    // })
+    console.log(updatedCart);
+    
   }, []);
-
-  console.log(updatedCart);
 
   return (
     <div className={props.displayCart ? "cart-container" : "collapse-cart-container"}>

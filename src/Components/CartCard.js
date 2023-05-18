@@ -32,11 +32,18 @@ const CartCard = (props) => {
   const handleCartRemoval = (id) => {
     // check if id does not equal an id in the updatedCart array? This is throwing an error currently
     props.setUpdatedCart((prev) => {
-      prev.filter((item) => {
-        return item.id !== id;
-      })
+      console.log(prev);
+      // prev.filter((item) => {
+      //   return item.id !== id;
+      // })
     })
-    console.log(props.updatedCart);
+    // console.log(props.updatedCart);
+
+    // const newState = props.updatedCart.filter(item => {
+    //   return item.id !== id;
+    // });
+
+    // props.setUpdatedCart(newState);
   }
 
   return (

@@ -93,9 +93,11 @@ const Shop = () => {
   const handleCart = (arr, id) => {
     arr.map(item => {
       if (id === item.id) {
-        setCart([...cart, item]);
+        // setCart([...cart, item]);
+        setCart([...cart, {...item, quantity: 1}]);
       }
     });
+
     console.log(cart);
   }
 
