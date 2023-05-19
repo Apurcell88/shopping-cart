@@ -1,34 +1,56 @@
-import { useState, useEffect } from 'react';
 import CartCard from "./CartCard";
 
 const Cart = (props) => {
-  // -------- CART STATE MANAGEMENT --------
-
-  // setCart now holds the quantity property so there's no more use for updatedCart. Delete this and adjust the code using it.
-  const [updatedCart, setUpdatedCart] = useState([]);
-
   // -------- CART FUNCTIONS --------
   // calculate subtotal function
   const calcTotal = () => {
     let total = 0;
-    // take items in cart and add their prices together
-    // update to include the quantity
-    updatedCart.map(item => {
+  
+    props.cart.map(item => {
        return total += item.price * item.quantity;
     });
     
     return total.toFixed(2);
   };
 
-  // -------- USEEFFECT --------
-  useEffect(() => {
-    // setUpdatedCart(props.cart.map(item => {
-    //   return {...item, quantity: 1}
-    // }));
+  // increase quantity function
+  const handleQuantityIncrease = (id) => { 
+    const newState = props.cart.map(item => {
+      if (item.id === id) {
+        return {...item, quantity: item.quantity + 1}
+      }
+      else {
+        return item;
+      }
+    });
 
-    console.log(updatedCart);
-    
-  }, []);
+    props.setCart(newState);
+  }
+
+  // decrease quantity function
+  const handleQuantityDecrease = (id) => { 
+    const newState = props.cart.map(item => {
+      if (item.id === id && item.quantity > 0) {
+        return {...item, quantity: item.quantity - 1}
+      }
+      else {
+        return item;
+      }
+    });
+
+    props.setCart(newState);
+  }
+
+  // remove from cart function
+  const handleCartRemoval = (id) => {
+    const newState = props.cart.filter(item => {
+      if (item.id !== id) {
+        return {...item}
+      }
+    })
+
+    props.setCart(newState);
+  }
 
   return (
     <div className={props.displayCart ? "cart-container" : "collapse-cart-container"}>
@@ -45,7 +67,7 @@ const Cart = (props) => {
       <div className='cart-title-container'>
         <h1 className='cart-title'>Your Shopping Bag</h1>
       </div>
-      {updatedCart.map(item => {
+      {props.cart.map(item => {
         
         return (
           <CartCard className="cart-card"
@@ -54,9 +76,9 @@ const Cart = (props) => {
             price={item.price}
             quantity={item.quantity}
             id={item.id}
-            updatedCart={updatedCart}
-            setUpdatedCart={setUpdatedCart}
-            // handleQuantityIncrease={handleQuantityIncrease}
+            handleQuantityIncrease={handleQuantityIncrease}
+            handleQuantityDecrease={handleQuantityDecrease}
+            handleCartRemoval={handleCartRemoval}
           />
         )
       })}

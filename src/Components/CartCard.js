@@ -1,51 +1,4 @@
 const CartCard = (props) => {
-  // -------- FUNCTIONS --------
-  // increase quantity function
-  const handleQuantityIncrease = (id) => { 
-    const newState = props.updatedCart.map(item => {
-      if (item.id === id) {
-        return {...item, quantity: item.quantity + 1}
-      }
-      else {
-        return item;
-      }
-    });
-
-    props.setUpdatedCart(newState);
-  }
-
-  // decrease quantity function
-  const handleQuantityDecrease = (id) => { 
-    const newState = props.updatedCart.map(item => {
-      if (item.id === id && item.quantity > 0) {
-        return {...item, quantity: item.quantity - 1}
-      }
-      else {
-        return item;
-      }
-    });
-
-    props.setUpdatedCart(newState);
-  }
-
-  // remove from cart function
-  const handleCartRemoval = (id) => {
-    // check if id does not equal an id in the updatedCart array? This is throwing an error currently
-    props.setUpdatedCart((prev) => {
-      console.log(prev);
-      // prev.filter((item) => {
-      //   return item.id !== id;
-      // })
-    })
-    // console.log(props.updatedCart);
-
-    // const newState = props.updatedCart.filter(item => {
-    //   return item.id !== id;
-    // });
-
-    // props.setUpdatedCart(newState);
-  }
-
   return (
     <div className="cart-card-container">
       <div className="cart-card-info-container">
@@ -58,7 +11,7 @@ const CartCard = (props) => {
         <button
           className="cart-quantity-btn"
           onClick={() => {
-            handleQuantityDecrease(props.id);
+            props.handleQuantityDecrease(props.id);
           }}
         >
             -
@@ -67,17 +20,17 @@ const CartCard = (props) => {
         <button
           className="cart-quantity-btn"
           onClick={() => {
-            handleQuantityIncrease(props.id);
+            props.handleQuantityIncrease(props.id);
           }}
         >
           +
         </button>
       </div>
-      <div>
+      <div className="cart-removal-container">
         <button
           className="cart-removal-btn"
           onClick={() => {
-            handleCartRemoval(props.id);
+            props.handleCartRemoval(props.id);
           }}
         >
           Remove

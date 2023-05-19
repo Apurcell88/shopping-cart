@@ -221,7 +221,6 @@ table {
 	gap: 10px;
 	width: 55%;
 	margin: 0.5rem 0;
-	border-bottom: 3px solid black;
 }
 
 .cart-quantity-btn {
@@ -229,6 +228,21 @@ table {
 	height: 1.7rem;
 	border-radius: 10px;
 	border: none;
+}
+
+.cart-removal-container {
+	width: 55%;
+	display: flex;
+	justify-content: center;
+	border-bottom: 3px solid black;
+}
+
+.cart-removal-btn {
+	border: none;
+	border-radius: 10px;
+	margin-bottom: 1rem;
+	width: 5rem;
+	height: 2rem;
 }
 
 /* --------------- CART PAGE---------------  */
