@@ -254,7 +254,7 @@ table {
 
 .cart-container {
 	width: 100vw;
-	height: 100%;
+	height: 100vh;
 	color: white;
 	background-color: #e1ad01;
 	display: flex;

@@ -129,7 +129,7 @@ const Shop = () => {
           displayCart={displayCart}
           setDisplayCart={setDisplayCart}
           displayShop={displayShop}
-        setDisplayShop={setDisplayShop}
+          setDisplayShop={setDisplayShop}
         /> :
         ''
       }

@@ -35,7 +35,6 @@ const Header = (props) => {
           <Nav className="me-auto">
             <Link className='nav-text' to="/">Home</Link>
             <Link className='nav-text' to="/shop">Shop</Link>
-            <Link className='nav-text' to="/cart">Cart</Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
