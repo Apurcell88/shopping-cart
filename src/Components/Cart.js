@@ -59,6 +59,7 @@ const Cart = (props) => {
           className='close-cart-btn'
           onClick={() => {
             props.setDisplayCart(false);
+            props.setDisplayShop(true);
           }}
         >
           X
@@ -67,21 +68,24 @@ const Cart = (props) => {
       <div className='cart-title-container'>
         <h1 className='cart-title'>Your Shopping Bag</h1>
       </div>
-      {props.cart.map(item => {
+      <div className='cart-card-container'>
+        {props.cart.map(item => {
         
-        return (
-          <CartCard className="cart-card"
-            title={item.title} 
-            image={item.image}
-            price={item.price}
-            quantity={item.quantity}
-            id={item.id}
-            handleQuantityIncrease={handleQuantityIncrease}
-            handleQuantityDecrease={handleQuantityDecrease}
-            handleCartRemoval={handleCartRemoval}
-          />
-        )
-      })}
+          return (
+            <CartCard className="cart-card"
+              title={item.title} 
+              image={item.image}
+              price={item.price}
+              quantity={item.quantity}
+              id={item.id}
+              handleQuantityIncrease={handleQuantityIncrease}
+              handleQuantityDecrease={handleQuantityDecrease}
+             handleCartRemoval={handleCartRemoval}
+            />
+          )
+        })}
+      </div>
+      
       <div>
         <h3>Subtotal: ${calcTotal()}</h3>
       </div>

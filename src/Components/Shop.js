@@ -10,6 +10,9 @@ import Cart from './Cart';
 const Shop = () => {
   // -------- STATE MANAGEMENT --------
 
+  // shop display related state
+  const [displayShop, setDisplayShop] = useState(true);
+
   // jewelry related states
   const [jewelry, setJewelry] = useState([]);
   const [displayJewelry, setDisplayJewelry] = useState(false);
@@ -34,10 +37,6 @@ const Shop = () => {
   const [cart, setCart] = useState([]);
   const [displayCart, setDisplayCart] = useState(false);
 
-  // updated states to include quantity
-  // update each state to include a quantity property
-  // const [updatedJewelry, setUpdatedJewelry] = useState([]);
-
   // -------- API CALLS --------
 
   useEffect(() => {
@@ -48,12 +47,6 @@ const Shop = () => {
       // console.log(data);
 
       setJewelry(data);
-      
-      // move code below into Cart component? Having the state here is a problem
-      // setUpdatedJewelry(jewelry.map(item => {
-      //  return {...item, quantity: 0}
-      // }));
-      // console.log(updatedJewelry);
     }
 
     // fetch electronics from API
@@ -107,11 +100,9 @@ const Shop = () => {
         search={search}
         setSearch={setSearch}
         displayCart={displayCart}
-        setDisplayCart={setDisplayCart} 
-        // setDisplayElectronics={setDisplayElectronics}
-        // setDisplayJewelry={setDisplayJewelry}
-        // setDisplayMenClothing={setDisplayMenClothing}
-        // setDisplayWomenClothing={setDisplayWomenClothing}
+        setDisplayCart={setDisplayCart}
+        displayShop={displayShop}
+        setDisplayShop={setDisplayShop} 
       />
       {search ?
         <Search
@@ -137,11 +128,12 @@ const Shop = () => {
           setCart={setCart}
           displayCart={displayCart}
           setDisplayCart={setDisplayCart}
+          displayShop={displayShop}
+        setDisplayShop={setDisplayShop}
         /> :
         ''
       }
-
-      <div className="shop-container">
+      <div className={displayShop ? "shop-container" : 'hidden'}>
         <div className="shop-categories-container">
           <div className='shop-categories-list'>
             <ul>

@@ -43,6 +43,11 @@ table {
 	border-spacing: 0;
 }
 
+/* --------------- CONDITIONAL STYLING ---------------  */
+.hidden {
+	display: none;
+}
+
 /* --------------- NAV ---------------  */
 .nav-text {
 	color: #e1ad01;
@@ -196,7 +201,7 @@ table {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 10px;
+	gap: 18px;
 	width: 50%;
 }
 
@@ -256,14 +261,14 @@ table {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	position: fixed;
+	/* position: fixed; */
 	opacity: 0.9;
-	top: 0;
-	left: 0;
+	/* top: 0; */
+	/* left: 0; */
 	animation: slide 1s;
 	letter-spacing: 1px;
 	z-index: 99;
-	overflow: scroll;
+	/* overflow: scroll; */
 }
 
 .close-cart-container {
@@ -282,7 +287,12 @@ table {
 }
 
 .cart-title-container {
-	margin-bottom: 1rem;
+	margin: 1rem 0;
+}
+
+.cart-card-container {
+	max-height: 100%;
+	overflow-y: scroll;
 }
 
 .collapse-cart-container {
@@ -298,4 +308,5 @@ table {
 	margin-top: 0.6rem;
 	border: none;
 	padding: 0.6rem;
+	margin-bottom: 1rem;
 }
