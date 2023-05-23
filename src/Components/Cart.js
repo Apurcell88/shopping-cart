@@ -1,4 +1,5 @@
 import CartCard from "./CartCard";
+import firestore from "../firebase-setup/firebase";
 
 const Cart = (props) => {
   // -------- CART FUNCTIONS --------
@@ -90,7 +91,14 @@ const Cart = (props) => {
         <h3>Subtotal: ${calcTotal()}</h3>
       </div>
       <div>
-        <button className="checkout-btn">CHECKOUT</button>
+        <button
+          className="checkout-btn"
+          onClick={() => {
+            console.log(firestore);
+          }}
+        >
+          CHECKOUT
+        </button>
       </div>
     </div>
   );
