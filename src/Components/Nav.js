@@ -5,6 +5,7 @@ import { faMagnifyingGlass, faCartShopping } from '@fortawesome/free-solid-svg-i
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import firestore from "../firebase-setup/firebase";
 
 const Header = (props) => {
   return (
@@ -34,7 +35,15 @@ const Header = (props) => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Link className='nav-text' to="/">Home</Link>
-            <Link className='nav-text' to="/shop">Shop</Link>
+            <Link
+              className='nav-text'
+              to="/shop"
+              onClick={() => {
+                console.log(firestore);
+              }}
+            >
+              Shop
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
