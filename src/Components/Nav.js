@@ -6,8 +6,21 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import firestore from "../firebase-setup/firebase";
+import {
+  signInWithPopup,
+  signOut
+} from 'firebase/auth';
+import { auth, googleProvider } from '../firebase-setup/firebase';
 
 const Header = (props) => {
+  const signInWithGoogle = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+    } catch(err){
+      console.error(err);
+    }
+  }
+
   return (
     <Navbar sticky="top" bg="dark" expand="md" variant="dark">
       <Container>
@@ -34,13 +47,16 @@ const Header = (props) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
+            <Link
+              className='nav-text'
+              onClick={signInWithGoogle}
+            >
+              Sign In
+            </Link>
             <Link className='nav-text' to="/">Home</Link>
             <Link
               className='nav-text'
               to="/shop"
-              onClick={() => {
-                console.log(firestore);
-              }}
             >
               Shop
             </Link>

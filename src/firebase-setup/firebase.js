@@ -1,9 +1,11 @@
 import { initializeApp } from 'firebase/app';
 import {
-    getFirestore,
-    collection,
-    getDocs
+    getFirestore
 } from 'firebase/firestore';
+import {
+  getAuth,
+  GoogleAuthProvider
+} from 'firebase/auth'
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_apiKey,
@@ -16,18 +18,7 @@ const firebaseConfig = {
 
 // init firebase app
 const app = initializeApp(firebaseConfig);
-const firestore = getFirestore(app);
 
-export default firestore;
-
-// init services
-// const db = getFirestore()
-
-// // collection ref
-// const colRef = collection(db, 'users');
-
-// // get collection data - returns a Promise
-// getDocs(colRef)
-//   .then((snapshot) => {
-//     console.log(snapshot.docs);
-//   })
+export const firestore = getFirestore(app);
+export const auth = getAuth(app);
+export const googleProvider = new GoogleAuthProvider();
