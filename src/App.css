@@ -310,3 +310,30 @@ table {
 	padding: 0.6rem;
 	margin-bottom: 1rem;
 }
+
+/* --------------- MEDIA QUERIES---------------  */
+@media screen and (min-width: 500px) {
+	/* --------------- SHOP PAGE ---------------  */
+	.add-to-cart-btn {
+		margin-right: 5.3rem;
+		padding: 0.3rem 1rem;
+	}
+}
+
+@media screen and (min-width: 700px) {
+	/* --------------- NAV ---------------  */
+	.nav-text {
+		color: #e1ad01;
+	}
+
+	.search-btn {
+		font-size: 1.5rem;
+		color: white;
+		background: transparent;
+		border: none;
+	}
+
+	.nav-icon {
+		margin: 0 1rem;
+	}
+}
