@@ -1,11 +1,15 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import Header from './Nav';
 import Card from './Card';
 import Search from './Search';
 import Cart from './Cart';
+import { db, auth } from "../firebase-setup/firebase";
+import {
+  collection,
+  getDocs,
+  addDoc
+} from "firebase/firestore";
 
 const Shop = () => {
   // -------- STATE MANAGEMENT --------
@@ -36,6 +40,10 @@ const Shop = () => {
   // cart related state
   const [cart, setCart] = useState([]);
   const [displayCart, setDisplayCart] = useState(false);
+
+  // -------- FIREBASE STATE MANAGEMENT --------
+  const [itemTitle, setItemTitle] = useState('');
+  const [itemPrice, setItemPrice] = useState('');
 
   // -------- API CALLS --------
 
@@ -94,6 +102,40 @@ const Shop = () => {
     console.log(cart);
   }
 
+  // -------- FIREBASE LOGIC --------
+  const usersRefCollection = collection(db, 'users');
+  
+  const getUserList = async () => {
+    try {
+      const data = await getDocs(usersRefCollection);
+      const filteredData = data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id
+      }))
+
+      console.log(filteredData);
+      // setCart(filteredData); // not sure about this yet
+    } catch(err) {
+      console.error(err);
+    }
+  }
+
+  const handleAddDoc = async () => {
+    try {
+      await addDoc(usersRefCollection, {
+        title: itemTitle,
+        price: itemPrice,
+        userId: auth?.currentUser?.uid
+      });
+    } catch(err) {
+      console.error(err);
+    }
+  }
+
+  useEffect(() => {
+    getUserList();
+  }, []);
+
   return (
     <div>
       <Header 
@@ -118,6 +160,8 @@ const Shop = () => {
           electronics={electronics}
           menClothing={menClothing}
           womenClothing={womenClothing}
+
+          onClick={handleAddDoc}
         /> :
         ''
       }
@@ -187,6 +231,8 @@ const Shop = () => {
                       className='add-to-cart-btn'
                       onClick={() => {
                         handleCart(electronics, item.id);
+                        setItemTitle(item.title);
+                        handleAddDoc();
                       }}
                     >
                       Add to cart
@@ -211,6 +257,8 @@ const Shop = () => {
                     className='add-to-cart-btn'
                     onClick={() => {
                       handleCart(jewelry, item.id);
+                      setItemTitle(item.title)
+                      handleAddDoc();
                     }}
                   >
                     Add to cart
@@ -235,6 +283,8 @@ const Shop = () => {
                       className='add-to-cart-btn'
                       onClick={() => {
                         handleCart(menClothing, item.id);
+                        setItemTitle(item.title);
+                        handleAddDoc();
                       }}
                     >
                       Add to cart
@@ -259,6 +309,8 @@ const Shop = () => {
                     className='add-to-cart-btn'
                     onClick={() => {
                       handleCart(womenClothing, item.id);
+                      setItemTitle(item.title);
+                      handleAddDoc();
                     }}
                   >
                     Add to cart
