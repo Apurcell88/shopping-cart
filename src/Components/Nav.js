@@ -46,19 +46,21 @@ const Header = (props) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Link
-              className='nav-text'
-              onClick={signInWithGoogle}
-            >
-              Sign In
-            </Link>
-            <Link className='nav-text' to="/">Home</Link>
-            <Link
-              className='nav-text'
-              to="/shop"
-            >
-              Shop
-            </Link>
+            <div className='links-container'>
+              <Link
+                className='nav-text'
+                onClick={signInWithGoogle}
+              >
+                Sign In
+              </Link>
+              <Link className='nav-text' to="/">Home</Link>
+              <Link
+                className='nav-text'
+                to="/shop"
+              >
+                Shop
+              </Link>
+            </div>
           </Nav>
         </Navbar.Collapse>
       </Container>
