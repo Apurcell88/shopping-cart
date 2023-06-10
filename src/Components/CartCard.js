@@ -1,6 +1,6 @@
 const CartCard = (props) => {
   return (
-    <div className="cart-card-container">
+    <div className="cart-card">
       <div className="cart-card-info-container">
         <h3 className="cart-card-title">{props.title}</h3>
         <img className="cart-card-product-image" src={props.image} alt="item" />

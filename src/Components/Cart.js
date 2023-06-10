@@ -68,11 +68,12 @@ const Cart = (props) => {
       <div className='cart-title-container'>
         <h1 className='cart-title'>Your Shopping Bag</h1>
       </div>
-      <div className='cart-card-container'>
+      <div className='cart-items-container'>
         {props.cart.map(item => {
         
           return (
-            <CartCard className="cart-card"
+            // <div className="cart-item">
+              <CartCard
               title={item.title} 
               image={item.image}
               price={item.price}
@@ -82,6 +83,7 @@ const Cart = (props) => {
               handleQuantityDecrease={handleQuantityDecrease}
              handleCartRemoval={handleCartRemoval}
             />
+            // </div>
           )
         })}
       </div>
