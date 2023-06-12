@@ -4,6 +4,7 @@ import Header from './Nav';
 import Card from './Card';
 import Search from './Search';
 import Cart from './Cart';
+import App from '../App';
 import { db, auth } from "../firebase-setup/firebase";
 import {
   collection,
@@ -138,6 +139,9 @@ const Shop = () => {
 
   return (
     <div>
+      <App
+        setDisplayShop={setDisplayShop}
+      />
       <Header 
         search={search}
         setSearch={setSearch}

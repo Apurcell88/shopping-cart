@@ -13,9 +13,7 @@ function App() {
         <h2>Available January 2023, preorder now.</h2>
         <button
           className='shop-btn'
-          onClick={() => {
-            return <Shop />
-          }}
+          // onClick={<Shop />} // need display
         >
           Shop Now
         </button>
