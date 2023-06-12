@@ -12,7 +12,7 @@ import {
   addDoc
 } from "firebase/firestore";
 
-const Shop = () => {
+const Shop = (props) => {
   // -------- STATE MANAGEMENT --------
 
   // shop display related state
@@ -139,9 +139,6 @@ const Shop = () => {
 
   return (
     <div>
-      <App
-        setDisplayShop={setDisplayShop}
-      />
       <Header 
         search={search}
         setSearch={setSearch}
@@ -204,7 +201,7 @@ const Shop = () => {
               <li className='category' onClick={() => {
                 setDisplayElectronics(false);
                 setDisplayJewelry(false);
-               setDisplayWomenClothing(false);
+                setDisplayWomenClothing(false);
                 setDisplayMenClothing(!displayMenClothing)
               }}>
                Men's Clothing
