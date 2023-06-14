@@ -145,7 +145,8 @@ const Shop = (props) => {
         displayCart={displayCart}
         setDisplayCart={setDisplayCart}
         displayShop={displayShop}
-        setDisplayShop={setDisplayShop} 
+        setDisplayShop={setDisplayShop}
+        cart={cart} 
       />
       {search ?
         <Search

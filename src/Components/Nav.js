@@ -10,6 +10,7 @@ import {
   signOut
 } from 'firebase/auth';
 import { auth, googleProvider } from '../firebase-setup/firebase';
+import Cart from './Cart';
 
 const Header = (props) => {
   const signInWithGoogle = async () => {
@@ -22,7 +23,7 @@ const Header = (props) => {
 
   return (
     <Navbar sticky="top" bg="dark" expand="md" variant="dark">
-      <Container>
+      <Container className='nav-container'>
         <Navbar.Brand className='nav-text'>Razor Edge PC</Navbar.Brand>
         <div>
             <button
@@ -40,8 +41,13 @@ const Header = (props) => {
                 props.setDisplayShop(!props.displayShop);
               }}
             > 
-              <FontAwesomeIcon className='nav-icon' icon={faCartShopping} />
+              {/* <FontAwesomeIcon className='nav-icon' icon={faCartShopping} /> */}
+              <span class='fa-layers fa-fw'>
+                <FontAwesomeIcon className='nav-icon' icon={faCartShopping} />
+                <span className="fa-layers-counter">1</span>
+              </span>
             </button>
+            
           </div>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

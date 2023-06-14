@@ -60,6 +60,9 @@ body::-webkit-scrollbar {
 
 .nav-text {
 	color: #e1ad01;
+	margin: 0.3rem 0;
+	font-size: 1.1rem;
+	text-decoration: none;
 }
 
 .search-btn {
@@ -71,6 +74,10 @@ body::-webkit-scrollbar {
 
 .nav-icon {
 	margin: 0 1rem;
+}
+
+.fa-layers-counter {
+	font-size: 2rem;
 }
 
 
@@ -343,14 +350,14 @@ body::-webkit-scrollbar {
 	/* --------------- NAV ---------------  */
 	.links-container {
 		width: 50vw;
-		display: flex;
 		justify-content: flex-end;
-		gap: 15px;
+		flex-direction: row;
+		gap: 20px;
 	}
 
 	.nav-text {
 		color: #e1ad01;
-		font-size: 1.2rem;
+		font-size: 1.3rem;
 	}
 
 	.search-btn {
@@ -440,8 +447,25 @@ body::-webkit-scrollbar {
 
 @media screen and (min-width: 800px) {
 	/* --------------- NAV ---------------  */
+	.nav-container {
+		height: 7vh;
+	}
+
+	.nav-icon {
+		font-size: 2.2rem;
+	}
+
+	.fa-layers-counter {
+		font-size: 3.5rem;
+	}
+
 	.links-container {
 		width: 45vw;
+	}
+
+	/* --------------- CART ---------------  */
+	.close-cart-container {
+		top: 110px;
 	}
 
 	/* --------------- LANDING PAGE ---------------  */
